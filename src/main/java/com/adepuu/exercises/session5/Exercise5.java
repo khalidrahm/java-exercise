@@ -16,13 +16,13 @@ public class Exercise5 {
     public static void main(String[] args) {
         int[] arr = {8,7,5,2,3};
         String direction = "asc";
-        int[] sorted = sortArray(arr, direction);
-        System.out.println(Arrays.toString(sorted));
+        int[] sorteyd = sortArray(arr, direction);
+        System.out.println(Arrays.toString(sorteyd));
 
     }
     public static int[] sortArray(int[] arr, String dir){
-        int[] sorted = new int[arr.length];
-        System.arraycopy(arr, 0, sorted, 0, arr.length); // Copy the original array to avoid modification
+        int[] sorted = Arrays.copyOf(arr, arr.length);
+
         if (dir.equals("desc")) {
             descOrder(sorted);
         } else if (dir.equals("asc")) {
@@ -31,27 +31,36 @@ public class Exercise5 {
         return sorted;
     }
 
-    public static void descOrder(int[] arr) {
-        for (int i = 0; i < arr.length - 1; i++) {
-            for (int j = 0; j < arr.length - 1 - i; j++) {
-                if (arr[j] < arr[j + 1]) {
-                    int temp = arr[j];
-                    arr[j] = arr[j + 1];
-                    arr[j + 1] = temp;
+    public static int[] descOrder(int[] arr) {
+        int[] sorted = new int[arr.length];
+        for (int i = 0; i < arr.length; i++) {
+            sorted[i] = arr[i];
+        }
+        for (int i = 0; i < sorted.length - 1; i++) {
+            for (int j = 0; j < sorted.length - 1 - i; j++) {
+                if (sorted[j] < sorted[j + 1]) {
+                    int temp = sorted[j];
+                    sorted[j] = sorted[j + 1];
+                    sorted[j + 1] = temp;
                 }
             }
         }
+        return sorted;
     }
-
-    public static void ascOrder(int[] arr) {
-        for (int i = 0; i < arr.length - 1; i++) {
-            for (int j = 0; j < arr.length - 1 - i; j++) {
-                if (arr[j] > arr[j + 1]) {
-                    int temp = arr[j];
-                    arr[j] = arr[j + 1];
-                    arr[j + 1] = temp;
+    public static int[] ascOrder(int[] arr) {
+        int[] sorted = new int[arr.length];
+        for (int i = 0; i < arr.length; i++) {
+            sorted[i] = arr[i];
+        }
+        for (int i = 0; i < sorted.length - 1; i++) {
+            for (int j = 0; j < sorted.length - 1 - i; j++) {
+                if (sorted[j] > sorted[j + 1]) {
+                    int temp = sorted[j];
+                    sorted[j] = sorted[j + 1];
+                    sorted[j + 1] = temp;
                 }
             }
         }
+        return sorted;
     }
 }
