@@ -1,4 +1,5 @@
 package com.adepuu.exercises.session5;
+import java.util.ArrayList;
 import  java.util.Arrays;
 
 public class Exercise9 {
@@ -19,24 +20,35 @@ public class Exercise9 {
      */
     public static void main(String[] args) {
         int[] temperatures1 = {73,74,75,71,69,72,76,73};
-        int[] result1 = dailyWaitDays(temperatures1);
-        System.out.println(Arrays.toString(result1));
+        ArrayList<Integer> result1 = dailyWaitDays(temperatures1);
+        System.out.println(result1);
 
     }
 
-    public static int[] dailyWaitDays(int[] temperatures) {
-        int[] result = new int[temperatures.length];
-        int[] stack = new int[temperatures.length];
-        int top = -1;
+    public static ArrayList<Integer> dailyWaitDays(int[] arra) {
+        ArrayList<Integer> dailyWait = new ArrayList<>();
+        for(int i = 0; i<arra.length;i++){
 
-        for (int i = 0; i < temperatures.length; i++) {
-            while (top > -1 && temperatures[i] > temperatures[stack[top]]) {
+            boolean foundWarmerDay = false;
 
-                int index = stack[top--];
-                result[index] = i - index;
+            int j = i+1;
+
+
+            while(!foundWarmerDay&&(j<arra.length)){
+
+                if(arra[j]>arra[i]){
+                    
+                    dailyWait.add(j-i);
+                    foundWarmerDay = true;
+
+                }
+                j=j+1;
+            }if (!foundWarmerDay) {
+                dailyWait.add(0);
             }
-            stack[++top] = i;
-        }
-        return result;
+        }return dailyWait;
+
+
+
     }
 }
