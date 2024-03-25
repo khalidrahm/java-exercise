@@ -16,19 +16,19 @@ public class Exercise5 {
     public static void main(String[] args) {
         int[] arr = {8,7,5,2,3};
         String direction = "asc";
-        int[] sorteyd = sortArray(arr, direction);
-        System.out.println(Arrays.toString(sorteyd));
+        int[] sorteid = sortArray(arr, direction);
+        System.out.println(Arrays.toString(sorteid));
 
     }
     public static int[] sortArray(int[] arr, String dir){
-        int[] sorted = Arrays.copyOf(arr, arr.length);
+        int[] sorteyd = Arrays.copyOf(arr, arr.length);
 
         if (dir.equals("desc")) {
-            descOrder(sorted);
+            return descOrder(sorteyd);
         } else if (dir.equals("asc")) {
-            ascOrder(sorted);
+            return ascOrder(sorteyd);
         }
-        return sorted;
+        return sorteyd;
     }
 
     public static int[] descOrder(int[] arr) {
