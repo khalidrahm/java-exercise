@@ -1,5 +1,5 @@
 package com.adepuu.exercises.session5;
-
+import  java.util.HashMap;
 public class Exercise3 {
     /**
      * Write a Java Program to Check if Array Contain Duplicates
@@ -17,6 +17,22 @@ public class Exercise3 {
      * Output: true
      */
     public static void main(String[] args) {
+        int[] arr = {1,2,3,4,5,3};
+        boolean duplicated = checkDuplicate(arr);
+        System.out.println(duplicated);
 
+
+    }
+
+    public static boolean checkDuplicate(int[] arra){
+        HashMap<Integer,Boolean> map = new HashMap<>();
+        for(int i=0;i<arra.length;i++){
+            if (!map.containsKey(arra[i])){
+                map.put(arra[i], true);
+            }else{
+                return true;
+            }
+        }
+        return false;
     }
 }
