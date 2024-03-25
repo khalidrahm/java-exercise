@@ -23,9 +23,9 @@ public class Exercise5 {
     public static int[] sortArray(int[] arr, String dir){
         int[] sorteyd = Arrays.copyOf(arr, arr.length);
 
-        if (dir.equals("desc")) {
+        if (dir=="desc") {
             return descOrder(sorteyd);
-        } else if (dir.equals("asc")) {
+        } else if (dir=="asc") {
             return ascOrder(sorteyd);
         }
         return sorteyd;
