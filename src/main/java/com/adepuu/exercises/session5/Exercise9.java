@@ -1,4 +1,5 @@
 package com.adepuu.exercises.session5;
+import  java.util.Arrays;
 
 public class Exercise9 {
     /**
@@ -17,6 +18,25 @@ public class Exercise9 {
      * Output: [1,1,0]
      */
     public static void main(String[] args) {
+        int[] temperatures1 = {73,74,75,71,69,72,76,73};
+        int[] result1 = dailyWaitDays(temperatures1);
+        System.out.println(Arrays.toString(result1));
 
+    }
+
+    public static int[] dailyWaitDays(int[] temperatures) {
+        int[] result = new int[temperatures.length];
+        int[] stack = new int[temperatures.length];
+        int top = -1;
+
+        for (int i = 0; i < temperatures.length; i++) {
+            while (top > -1 && temperatures[i] > temperatures[stack[top]]) {
+
+                int index = stack[top--];
+                result[index] = i - index;
+            }
+            stack[++top] = i;
+        }
+        return result;
     }
 }
